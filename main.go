@@ -11,9 +11,11 @@ func main() {
 	i := 0
 
 	fmt.Println("i is set to", i)
-	fmt.Println(saySomething())
+	a, b := saySomething()
+
+	fmt.Println(a, b)
 }
 
-func saySomething() string {
-	return "SomeThing"
+func saySomething() (string, int) {
+	return "SomeThing", 2
 }
