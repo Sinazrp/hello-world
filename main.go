@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 func main() {
 	fmt.Println("Hello, World!")
@@ -14,8 +17,21 @@ func main() {
 	a, b := saySomething()
 
 	fmt.Println(a, b)
+
+	myString := "green"
+	log.Println("my Satring is ", myString)
+
+	changeUsingpointer(&myString)
+	log.Println("my Satring is ", myString)
+
 }
 
 func saySomething() (string, int) {
 	return "SomeThing", 2
+}
+
+func changeUsingpointer(s *string) {
+	log.Print("my Satring  set to ", s)
+
+	*s = "changed"
 }
