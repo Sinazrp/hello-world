@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 //type User struct {
 //	FirstName   string
 //	LastName    string
@@ -14,7 +16,7 @@ package main
 //}
 
 func main() {
-	
+
 	//myMap := make(map[string]string)
 	//myMap["wife"] = "Elnaz"
 	//log.Println(myMap["wife"])
@@ -50,6 +52,18 @@ func main() {
 	//
 	//changeUsingpointer(&myString)
 	//log.Println("my Satring is ", myString)
+
+	//animals := []string{"dog", "cat", "cow"}
+	//for _, animal := range animals {
+	//	fmt.Println(animal)
+	//}
+	animals := map[string]string{}
+	animals["cat"] = "mewo"
+	animals["dog"] = "bark"
+	animals["goat"] = "BeEee"
+	for k, v := range animals {
+		fmt.Println(k, v)
+	}
 
 }
 
