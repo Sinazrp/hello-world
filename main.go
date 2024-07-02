@@ -1,6 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/Sinazrp/mytestingpack/helpers"
+	"log"
+)
+
+type Animal interface {
+	says() string
+	NumberOfLegs() int
+}
+type Dog struct {
+	name  string
+	breed string
+}
+type Cat struct {
+	name          string
+	breed         string
+	numberOfTeeth int
+}
 
 //type User struct {
 //	FirstName   string
@@ -16,6 +34,9 @@ import "fmt"
 //}
 
 func main() {
+	var myVar helpers.SomeType
+	myVar.TypeName = "Sina"
+	log.Println(myVar)
 
 	//myMap := make(map[string]string)
 	//myMap["wife"] = "Elnaz"
@@ -57,14 +78,29 @@ func main() {
 	//for _, animal := range animals {
 	//	fmt.Println(animal)
 	//}
-	animals := map[string]string{}
-	animals["cat"] = "mewo"
-	animals["dog"] = "bark"
-	animals["goat"] = "BeEee"
-	for k, v := range animals {
-		fmt.Println(k, v)
-	}
+	//animals := map[string]string{}
+	//animals["cat"] = "mewo"
+	//animals["dog"] = "bark"
+	//animals["goat"] = "BeEee"
+	//for k, v := range animals {
+	//	fmt.Println(k, v)
+	//}
 
+	dog := Dog{
+		name:  "Dog",
+		breed: "german Shephered",
+	}
+	PrintInfo(dog)
+
+}
+func PrintInfo(a Animal) {
+	fmt.Println(a.says(), a.NumberOfLegs())
+}
+func (d Dog) says() string {
+	return "woof"
+}
+func (d Dog) NumberOfLegs() int {
+	return 4
 }
 
 //func saySomething() (string, int) {
