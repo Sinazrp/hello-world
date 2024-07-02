@@ -3,22 +3,21 @@ package main
 import (
 	"fmt"
 	"github.com/Sinazrp/mytestingpack/helpers"
-	"log"
 )
 
-type Animal interface {
-	says() string
-	NumberOfLegs() int
-}
-type Dog struct {
-	name  string
-	breed string
-}
-type Cat struct {
-	name          string
-	breed         string
-	numberOfTeeth int
-}
+//type Animal interface {
+//	says() string
+//	NumberOfLegs() int
+//}
+//type Dog struct {
+//	name  string
+//	breed string
+//}
+//type Cat struct {
+//	name          string
+//	breed         string
+//	numberOfTeeth int
+//}
 
 //type User struct {
 //	FirstName   string
@@ -33,10 +32,15 @@ type Cat struct {
 //
 //}
 
+func CalculateValue(intChan chan int) {
+	randomNumber := helpers.RandomInt(10)
+	intChan <- randomNumber
+}
+
 func main() {
-	var myVar helpers.SomeType
-	myVar.TypeName = "Sina"
-	log.Println(myVar)
+	//var myVar helpers.SomeType
+	//myVar.TypeName = "Sina"
+	//log.Println(myVar)
 
 	//myMap := make(map[string]string)
 	//myMap["wife"] = "Elnaz"
@@ -86,22 +90,29 @@ func main() {
 	//	fmt.Println(k, v)
 	//}
 
-	dog := Dog{
-		name:  "Dog",
-		breed: "german Shephered",
-	}
-	PrintInfo(dog)
+	//dog := Dog{
+	//	name:  "Dog",
+	//	breed: "german Shephered",
+	//}
+	//PrintInfo(dog)
+
+	intChan := make(chan int)
+	defer close(intChan)
+	go CalculateValue(intChan)
+	num := <-intChan
+	fmt.Println(num)
 
 }
-func PrintInfo(a Animal) {
-	fmt.Println(a.says(), a.NumberOfLegs())
-}
-func (d Dog) says() string {
-	return "woof"
-}
-func (d Dog) NumberOfLegs() int {
-	return 4
-}
+
+//func PrintInfo(a Animal) {
+//	fmt.Println(a.says(), a.NumberOfLegs())
+//}
+//func (d Dog) says() string {
+//	return "woof"
+//}
+//func (d Dog) NumberOfLegs() int {
+//	return 4
+//}
 
 //func saySomething() (string, int) {
 //	return "SomeThing", 2
