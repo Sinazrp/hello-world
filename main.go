@@ -1,8 +1,8 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"github.com/Sinazrp/mytestingpack/helpers"
 )
 
 //type Animal interface {
@@ -32,10 +32,10 @@ import (
 //
 //}
 
-func CalculateValue(intChan chan int) {
-	randomNumber := helpers.RandomInt(10)
-	intChan <- randomNumber
-}
+//func CalculateValue(intChan chan int) {
+//	randomNumber := helpers.RandomInt(10)
+//	intChan <- randomNumber
+//}
 
 func main() {
 	//var myVar helpers.SomeType
@@ -96,11 +96,27 @@ func main() {
 	//}
 	//PrintInfo(dog)
 
-	intChan := make(chan int)
-	defer close(intChan)
-	go CalculateValue(intChan)
-	num := <-intChan
-	fmt.Println(num)
+	//intChan := make(chan int)
+	//defer close(intChan)
+	//go CalculateValue(intChan)
+	//num := <-intChan
+	//fmt.Println(num)
+
+	result, err := divide(100.0, 0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(result)
+}
+
+func divide(x, y float32) (float32, error) {
+	var result float32
+	if y == 0 {
+		return result, errors.New("cannot divide by zero")
+	}
+	result = x / y
+	return result, nil
 
 }
 
