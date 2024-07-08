@@ -102,7 +102,7 @@ func main() {
 	//num := <-intChan
 	//fmt.Println(num)
 
-	result, err := divide(100.0, 0)
+	result, err := divide(100.0, 2)
 	if err != nil {
 		fmt.Println(err)
 		return
